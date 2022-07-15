@@ -12,8 +12,10 @@
         let player = ruffle.createPlayer();
         let container = document.getElementById("container");
         container.appendChild(player);
-        player.load("https://www.dropbox.com/s/fv8o1zdm5qjxlaa/sonic%20rpg%2010.swf?dl=1")
-        player.load("https://www.dropbox.com/s/fv8o1zdm5qjxlaa/sonic%20rpg%2010.swf?dl=1").then(() => {
+        player.load("https://uploads.ungrounded.net/775000/775845_episode-10-version1-3-6.swf")
+        player.load("https://uploads.ungrounded.net/775000/775845_episode-10-version1-3-6.swf").then(() => {
+        #//player.load("https://www.dropbox.com/s/fv8o1zdm5qjxlaa/sonic%20rpg%2010.swf?dl=1")
+        #//player.load("https://www.dropbox.com/s/fv8o1zdm5qjxlaa/sonic%20rpg%2010.swf?dl=1").then(() => {
     console.info("Ruffle successfully loaded the file");
     }).catch((e) => {
     console.error(`Ruffle failed to load the file: ${e}`);
