@@ -1,0 +1,6 @@
+. filter=lfs diff=lfs merge=lfs -text
+data/. filter=lfs diff=lfs merge=lfs -text
+data/cores/. filter=lfs diff=lfs merge=lfs -text
+data/localization/. filter=lfs diff=lfs merge=lfs -text
+data/minify/. filter=lfs diff=lfs merge=lfs -text
+data/old/. filter=lfs diff=lfs merge=lfs -text
