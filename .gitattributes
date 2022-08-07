@@ -1,2 +1,1 @@
-SonicRPG10/sonicrpg10.swf filter=lfs diff=lfs merge=lfs -text
 sonicrpg10.swf filter=lfs diff=lfs merge=lfs -text
