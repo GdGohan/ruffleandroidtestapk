@@ -3,10 +3,20 @@
 		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<script type="text/javascript" src="https://gdgohan.github.io/ruffleandroidtest/assets/ruffle.js">
+			<script>
+    window.RufflePlayer = window.RufflePlayer || {};
+
+    window.addEventListener("DOMContentLoaded", () => {
+        let ruffle = window.RufflePlayer.newest();
+        let player = ruffle.createPlayer();
+        let container = document.getElementById("container");
+        container.appendChild(player);
+        player.load("https://gdgohan.github.io/ruffleandroidtestapk/assets/FFSX6.swf");
+    });
+</script>
 	</head>
 	<body>
 		<div id="flashContent">
-			<embed src="https://gdgohan.github.io/ruffleandroidtestapk/assets/FFSX6.swf"/>
 		</div>
 	</body>
 </html>
