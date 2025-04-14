@@ -1,0 +1,62 @@
+<div style="width:640px;height:480px;max-width:100%">
+  <div id="game"></div>
+</div>
+
+<!-- JSZip via CDN -->
+<script src="https://gdgohan.github.io/ruffleandroidtestapk/SonicRush/jszip.min.js"></script>
+
+<script type="text/javascript">
+  async function fetchAndCombineParts(partUrls) {
+    const parts = await Promise.all(partUrls.map(url => fetch(url).then(r => r.arrayBuffer())));
+    const totalSize = parts.reduce((a, b) => a + b.byteLength, 0);
+    const combined = new Uint8Array(totalSize);
+    let offset = 0;
+    for (let part of parts) {
+      combined.set(new Uint8Array(part), offset);
+      offset += part.byteLength;
+    }
+    return combined.buffer;
+  }
+
+  async function unzipRomWithJSZip(zipBuffer) {
+    const zip = await JSZip.loadAsync(zipBuffer);
+    for (let fileName in zip.files) {
+      if (fileName.endsWith(".nds")) {
+        const fileData = await zip.files[fileName].async("uint8array");
+        return fileData;
+      }
+    }
+    throw new Error("Arquivo .nds não encontrado no zip");
+  }
+
+  async function startEmulator() {
+    const partUrls = [
+      'https://gdgohan.github.io/ruffleandroidtestapk/SonicRush/sonicrush.zip.001',
+      'https://gdgohan.github.io/ruffleandroidtestapk/SonicRush/sonicrush.zip.002',
+      'https://gdgohan.github.io/ruffleandroidtestapk/SonicRush/sonicrush.zip.003'
+    ];
+
+    try {
+      const zipBuffer = await fetchAndCombineParts(partUrls);
+      const ndsData = await unzipRomWithJSZip(zipBuffer);
+
+      const blob = new Blob([ndsData], { type: "application/octet-stream" });
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Configurações do EmulatorJS
+      window.EJS_player = "#game";
+      window.EJS_gameUrl = blobUrl;
+      window.EJS_core = "nds";
+      window.EJS_pathtodata = "https://gdgohan.github.io/ruffleandroidtestapk/SonicCollection/data/";
+
+      // Carrega o loader.js
+      const script = document.createElement("script");
+      script.src = "https://gdgohan.github.io/ruffleandroidtestapk/SonicCollection/data/loader.js";
+      document.body.appendChild(script);
+    } catch (err) {
+      console.error("Erro ao carregar ROM:", err);
+    }
+  }
+
+  startEmulator();
+</script>
