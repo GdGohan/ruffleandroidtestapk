@@ -7,3 +7,4 @@ https://gdgohan.github.io/ruffleandroidtestapk/soniccrazyworld/index.html
 https://gdgohan.github.io/ruffleandroidtestapk/sonicgenesis(MS)/index.html
 https://gdgohan.github.io/ruffleandroidtestapk/sonicxtreme/index.html
 https://gdgohan.github.io/ruffleandroidtestapk/UltimateFlashSonic/index.html
+https://gdgohan.github.io/ruffleandroidtestapk/SonicRush/index.html
